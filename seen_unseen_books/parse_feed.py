@@ -5,12 +5,18 @@ from feedparser import parse
 from loguru import logger
 
 from seen_unseen_books.books_from_episode import fetch_books_from_episode
-from seen_unseen_books.models import Episode, Episodes
+from seen_unseen_books.models import Book, Episode, Episodes
+
+BOOKS_TYPE = Dict[str, Book]
+EPISODES_TYPE = Dict[str, Episodes]
+BOOKS_EPISODES_TUPLE = Tuple[BOOKS_TYPE, EPISODES_TYPE]
 
 
-def fetch_books_from_feed(max_pages: int = 20) -> Tuple[dict, dict]:
+def fetch_books_from_feed(
+    max_pages: int = 20,
+) -> BOOKS_EPISODES_TUPLE:
     books = {}
-    episodes: Dict[str, Episodes] = defaultdict(Episodes)
+    episodes: EPISODES_TYPE = defaultdict(Episodes)
 
     # Page 0 and page 1 of the RSS feed are the same, so we skip page 0.
     for page in range(1, 1 + max_pages):
