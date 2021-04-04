@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 
 from seen_unseen_books.models import Book
 
-
 BOOK_KEYS_BLACKLIST = [
     "indian_express",
     "times_of_india",
