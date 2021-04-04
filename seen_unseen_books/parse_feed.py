@@ -20,6 +20,7 @@ def fetch_books_from_feed(
 
     # Page 0 and page 1 of the RSS feed are the same, so we skip page 0.
     for page in range(1, 1 + max_pages):
+        books_before = len(books)
         feed = parse(f"https://seenunseen.in/feed/?paged={page}")
 
         for entry in feed.entries:
@@ -31,5 +32,9 @@ def fetch_books_from_feed(
             for book in episode_books.keys():
                 episodes[book].episodes.append(episode)
         logger.info(f"Page {page} parsed. Total books so far: {len(books)}.")
+        # Break out of loop if after parsing new page of feed, we have the same number of books as before parsing the page.
+        # There are some earlier pages that we don't parse correctly. Ignore them.
+        if len(books) == books_before:
+            break
 
     return books, episodes
