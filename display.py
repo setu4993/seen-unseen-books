@@ -74,5 +74,16 @@ def popular_books_episodes(
         )
     ]
 
+
+def display_footer():
+    title("About")
+    markdown(
+        "This is **NOT** affiliated to Amit Varma or the podcast in any form, but just created as a hobby project by someone that enjoys the podcast."
+    )
+    markdown(
+        "Built and maintained by [Setu Shah](https://setu.me/). Source on [GitHub](https://github.com/setu4993/seen-unseen-books)."
+    )
+
+
 if __name__ == "__main__":
     create_page()
