@@ -9,6 +9,8 @@ python = "^3.8"
 feedparser = "^6.0.2"
 requests = "^2.25.1"
 beautifulsoup4 = "^4.9.3"
+streamlit = "^0.79.0"
+watchdog = "^2.0.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
