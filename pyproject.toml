@@ -6,6 +6,9 @@ authors = ["Setu Shah <setu+seen-unseen-books@setu.me>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+feedparser = "^6.0.2"
+requests = "^2.25.1"
+beautifulsoup4 = "^4.9.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
