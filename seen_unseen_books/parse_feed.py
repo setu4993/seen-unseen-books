@@ -19,6 +19,7 @@ def fetch_books_from_feed(max_pages: int = 20) -> Tuple[dict, dict]:
         for entry in feed.entries:
             episode_url = entry.links[0]["href"]
             episode_books = fetch_books_from_episode(episode_url)
+            # Replace previously cached books with new ones if there's ones with the same key.
             books.update(episode_books)
             episode = Episode(title=entry["title"], url=episode_url)
             for book in episode_books.keys():
