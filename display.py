@@ -17,7 +17,7 @@ sort_options = SimpleNamespace(recent="Most recent", popular="Most popular")
 
 @cache(ttl=timedelta(days=1).total_seconds())
 def books_episodes() -> BOOKS_EPISODES_TUPLE:
-    return fetch_books_from_feed(1)
+    return fetch_books_from_feed(25)
 
 
 def create_page():
