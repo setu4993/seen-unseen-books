@@ -8,6 +8,15 @@ from bs4 import BeautifulSoup
 from seen_unseen_books.models import Book
 
 
+BOOK_KEYS_BLACKLIST = [
+    "indian_express",
+    "times_of_india",
+    "economic_times",
+    "hindu",
+    "mint",
+]
+
+
 def remove_special_characters(input_str: str) -> str:
     return sub(r"\W+", " ", input_str).strip()
 
@@ -40,6 +49,9 @@ def fetch_books_from_episode(episode_url: str) -> Dict[str, Book]:
             book_url = urlparse(google_redirect_url.query[2:]).geturl()
         except TypeError:
             book_url = None
+
+        if book_key(name) in BOOK_KEYS_BLACKLIST:
+            continue
 
         books[book_key(name)] = Book(
             title=name,
