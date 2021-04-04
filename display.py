@@ -26,7 +26,7 @@ def create_page():
     title(page_title)
 
     markdown(
-        "These are all the books mentioned in various episodes of the podcast [The Seen and The Unseen](http://seenunseen.in/) by Amit Varma."
+        "An inexhaustive list of the books mentioned in the episode notes of the podcast [The Seen and The Unseen](http://seenunseen.in/) by Amit Varma."
     )
 
     books, episodes = books_episodes()
