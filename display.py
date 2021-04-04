@@ -5,8 +5,12 @@ from typing import List
 from streamlit import cache, markdown, selectbox, set_page_config, title
 
 from seen_unseen_books.models import Book, Episodes
-from seen_unseen_books.parse_feed import (BOOKS_EPISODES_TUPLE, BOOKS_TYPE,
-                                          EPISODES_TYPE, fetch_books_from_feed)
+from seen_unseen_books.parse_feed import (
+    BOOKS_EPISODES_TUPLE,
+    BOOKS_TYPE,
+    EPISODES_TYPE,
+    fetch_books_from_feed,
+)
 
 sort_options = SimpleNamespace(recent="Most recent", popular="Most popular")
 
@@ -27,7 +31,7 @@ def create_page():
 
     books, episodes = books_episodes()
     display_format = selectbox(
-        "How should the books be sorted?",
+        "How should the list of books be sorted?",
         [sort_options.recent, sort_options.popular],
     )
     if display_format == sort_options.recent:
