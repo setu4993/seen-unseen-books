@@ -11,6 +11,7 @@ requests = "^2.25.1"
 beautifulsoup4 = "^4.9.3"
 streamlit = "^0.79.0"
 watchdog = "^2.0.2"
+loguru = "^0.5.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
