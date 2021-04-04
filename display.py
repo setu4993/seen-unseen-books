@@ -4,6 +4,7 @@ from typing import List
 
 from streamlit import title, selectbox, markdown, cache, set_page_config
 
+from seen_unseen_books.models import Book, Episodes
 from seen_unseen_books.parse_feed import (
     BOOKS_EPISODES_TUPLE,
     BOOKS_TYPE,
@@ -43,6 +44,35 @@ def create_page():
         markdown("\n".join(lines))
 
     display_footer()
+
+
+def lines_from_book_episodes(
+    index: int, book: Book, book_episodes: Episodes
+) -> List[str]:
+    lines = []
+    lines = [f"{index + 1}. {book.md()}"]
+    lines.extend(book_episodes.md())
+    return lines
+
+
+def recent_books_episodes(
+    books: BOOKS_TYPE, episodes: EPISODES_TYPE
+) -> List[List[str]]:
+    return [
+        lines_from_book_episodes(i, book, episodes[book_key])
+        for i, (book_key, book) in enumerate(books.items())
+    ]
+
+
+def popular_books_episodes(
+    books: BOOKS_TYPE, episodes: EPISODES_TYPE
+) -> List[List[str]]:
+    return [
+        lines_from_book_episodes(i, books[book_key], book_episodes)
+        for i, (book_key, book_episodes) in enumerate(
+            sorted(episodes.items(), key=lambda x: len(x[1]), reverse=True)
+        )
+    ]
 
 if __name__ == "__main__":
     create_page()
