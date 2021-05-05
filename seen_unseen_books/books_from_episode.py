@@ -46,6 +46,8 @@ def fetch_books_from_episode(episode_url: str) -> Dict[str, Book]:
         try:
             google_redirect_url = urlparse(i_tag.a["data-saferedirecturl"])
             book_url = urlparse(google_redirect_url.query[2:]).geturl()
+        except KeyError:
+            book_url = urlparse(i_tag.a["href"]).geturl()
         except TypeError:
             book_url = None
 
