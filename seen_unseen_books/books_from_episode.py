@@ -13,6 +13,10 @@ BOOK_KEYS_BLACKLIST = [
     "economic_times",
     "hindu",
     "mint",
+    "business_standard",
+    "so",
+    "deccan_herald",
+    "india_today",
 ]
 
 
