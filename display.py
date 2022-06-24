@@ -2,7 +2,7 @@ from datetime import timedelta
 from types import SimpleNamespace
 from typing import List
 
-from streamlit import cache, markdown, selectbox, set_page_config, title
+from streamlit import experimental_memo, markdown, selectbox, set_page_config, title
 
 from seen_unseen_books.models import Book, Episodes
 from seen_unseen_books.parse_feed import (
@@ -15,7 +15,7 @@ from seen_unseen_books.parse_feed import (
 sort_options = SimpleNamespace(recent="Most recent", popular="Most popular")
 
 
-@cache(ttl=timedelta(days=1).total_seconds())
+@experimental_memo(ttl=timedelta(days=1).total_seconds())
 def books_episodes() -> BOOKS_EPISODES_TUPLE:
     return fetch_books_from_feed(25)
 
