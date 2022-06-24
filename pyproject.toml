@@ -9,9 +9,9 @@ python = "^3.8"
 feedparser = "^6.0.2"
 requests = "^2.25.1"
 beautifulsoup4 = "^4.9.3"
-streamlit = "^0.79.0"
+streamlit = "^1.10.0"
 watchdog = "^2.0.2"
-loguru = "^0.5.3"
+loguru = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"
